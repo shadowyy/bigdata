@@ -59,7 +59,12 @@ dependencies {
     compile(
             "org.apache.spark:spark-core_2.10:$sparkVersion",
             "org.springframework.data:spring-data-hadoop:$springDataVersion",
-            "org.apache.hbase:hbase-client:$hbaseVersion"
+            "org.apache.hbase:hbase-client:$hbaseVersion",
+            "org.apache.kafka:kafka-clients:$kafkaVersion",
+            "org.apache.kafka:kafka_2.11:$kafkaVersion",
+            'org.apache.zookeeper:zookeeper:3.4.10'
+
+
     )
 
     testCompile "junit:junit:$junit"

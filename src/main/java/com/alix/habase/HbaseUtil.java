@@ -36,7 +36,8 @@ public class HbaseUtil {
         Configuration conf = HBaseConfiguration.create();
 
         // 设置连接参数：HBase数据库所在的主机IP
-        conf.set("hbase.zookeeper.quorum", "192.168.11.4");
+        //conf.set("hbase.zookeeper.quorum", "192.168.11.4");
+        conf.set("hbase.zookeeper.quorum", "10.15.100.248");
         // 设置连接参数：HBase数据库使用的端口
         conf.set("hbase.zookeeper.property.clientPort", "2181");
 
@@ -66,7 +67,7 @@ public class HbaseUtil {
             HTableDescriptor hTableDescriptor = new HTableDescriptor(tableName);
 
             // 列族描述对象
-            HColumnDescriptor family= new HColumnDescriptor("base");;
+            HColumnDescriptor family= new HColumnDescriptor("base");
 
             // 在数据表中新建一个列族
             hTableDescriptor.addFamily(family);
