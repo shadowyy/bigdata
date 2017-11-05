@@ -4,7 +4,7 @@ package com.alix.constant;
  * @author yuyue
  * @version 2017-11-3 0003 10:13
  */
-public class ConstantUtils {
+public class Constants {
 
     public final static String METADATA_BROKER_LIST_VALUE = "10.15.100.248:8080";
 

@@ -1,16 +1,8 @@
-//buildscript {
-//    repositories {
-//        maven { url "http://maven.xx.com/nexus/content/groups/public/" }
-//        maven { url "https://plugins.gradle.org/m2/" }
-//    }
-////    dependencies {
-////        classpath "com.github.jengelman.gradle.plugins:shadow:1.2.3"
-////    }
-//}
-//
-//repositories {
-//    maven { url "http://maven.xx.com/nexus/content/groups/public/" }
-//}
+buildscript {
+    dependencies {
+        classpath "com.github.jengelman.gradle.plugins:shadow:1.2.3"
+    }
+}
 
 
 group 'com.alix'
@@ -18,6 +10,7 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: "com.github.johnrengelman.shadow"
 
 
 repositories {
@@ -32,7 +25,7 @@ repositories {
 ext {
     jdkVersion = '1.8'
     junit = '4.12'
-    sparkVersion = '1.6.0'
+    sparkVersion = '1.6.3'
     springBootVersion = '1.5.8.RELEASE'
     springVersion = '4.3.12.RELEASE'
     springDataVersion = '2.5.0.RELEASE'
@@ -57,15 +50,29 @@ compileTestJava {
 
 dependencies {
     compile(
-            "org.apache.spark:spark-core_2.10:$sparkVersion",
             "org.springframework.data:spring-data-hadoop:$springDataVersion",
             "org.apache.hbase:hbase-client:$hbaseVersion",
+            "org.apache.hbase:hbase-common:$hbaseVersion",
+            "org.apache.hbase:hbase-protocol:$hbaseVersion",
+            "org.apache.spark:spark-core_2.11:$sparkVersion",
+            "org.apache.spark:spark-streaming_2.11:$sparkVersion",
+            "org.apache.spark:spark-streaming-kafka_2.11:$sparkVersion",
             "org.apache.kafka:kafka-clients:$kafkaVersion",
             "org.apache.kafka:kafka_2.11:$kafkaVersion",
+            "org.apache.kafka:kafka-streams:$kafkaVersion",
             'org.apache.zookeeper:zookeeper:3.4.10'
-
-
     )
 
     testCompile "junit:junit:$junit"
 }
+
+shadowJar {
+    zip64 true
+    mergeServiceFiles()
+}
+
+artifacts {
+    shadowJar;
+}
+
+build.dependsOn(shadowJar);

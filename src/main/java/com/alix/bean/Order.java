@@ -10,6 +10,14 @@ public class Order {
     //订单价格
     private Float price;
 
+    public Order() {
+    }
+
+    public Order(String name, Float price) {
+        this.name = name;
+        this.price = price;
+    }
+
     public String getName() {
         return name;
     }
