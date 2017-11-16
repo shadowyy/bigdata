@@ -49,6 +49,21 @@ public class Test {
         getResultScann("fk:t_fk_derived_result");
     }
 
+    private static void test0() throws Exception {
+        //HBaseConfiguration conf =  (HBaseConfiguration) HBaseConfiguration.create();
+        //byte[] rowkey = Bytes.toBytes("cenyuhai");
+        //byte[] family = Bytes.toBytes("f");
+        //byte[] qualifier = Bytes.toBytes("name");
+        //byte[] value = Bytes.toBytes("岑玉海");
+        //
+        //Table table=connection
+        //HTable table = new HTable(conf, "test");
+        //Put put = new Put(rowkey);
+        //put.add(family,qualifier,value);
+        //
+        //table.put(put);
+    }
+
 
     /**
      * 遍历查询hbase表

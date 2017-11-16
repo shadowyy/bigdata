@@ -29,7 +29,7 @@ public class Producer {
 
         org.apache.kafka.clients.producer.Producer producer = new KafkaProducer<String, String>(properties);
         String line = in.nextLine();
-        while (!line.equals("exit")) {
+        while (!"exit".equals(line)) {
             ProducerRecord<String, String> rec = new ProducerRecord<String, String>("xxx", line);
             producer.send(rec);
             line = in.nextLine();

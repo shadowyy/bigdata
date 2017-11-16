@@ -1,0 +1,17 @@
+#!/usr/bin/env pyton
+# -- coding:utf-8 --
+
+def sayHello():
+    str = "hello"
+    print(str)
+
+
+if __name__ == "__main__":
+    print ('This is main of module "hello.py"')
+    sayHello()
+
+# for i in range(1, 5):
+#     for j in range(1, 5):
+#         for k in range(1, 5):
+#             if (i != k) and (i != j) and (j != k):
+#                 print i, j, k

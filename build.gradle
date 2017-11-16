@@ -60,7 +60,10 @@ dependencies {
             "org.apache.kafka:kafka-clients:$kafkaVersion",
             "org.apache.kafka:kafka_2.11:$kafkaVersion",
             "org.apache.kafka:kafka-streams:$kafkaVersion",
-            'org.apache.zookeeper:zookeeper:3.4.10'
+            'org.apache.zookeeper:zookeeper:3.4.10',
+            'org.apache.hadoop:hadoop-commo:2.8.2',
+            'com.google.cloud:google-cloud-translate:1.8.0'
+
     )
 
     testCompile "junit:junit:$junit"

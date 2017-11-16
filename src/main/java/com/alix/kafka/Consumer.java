@@ -26,7 +26,7 @@ public class Consumer {
         ConsumerThread consumerRunnable = new ConsumerThread(topicName, groupId);
         consumerRunnable.start();
         String line = "";
-        while (!line.equals("exit")) {
+        while (!"exit".equals(line)) {
             line = in.next();
         }
         consumerRunnable.getKafkaConsumer().wakeup();
@@ -44,6 +44,7 @@ public class Consumer {
             this.groupId = groupId;
         }
 
+        @Override
         public void run() {
             Properties configProperties = new Properties();
             //bootstrap.servers
@@ -64,8 +65,9 @@ public class Consumer {
             try {
                 while (true) {
                     ConsumerRecords<String, String> records = kafkaConsumer.poll(100);
-                    for (ConsumerRecord<String, String> record : records)
+                    for (ConsumerRecord<String, String> record : records){
                         System.out.println(record.value());
+                    }
                 }
             } catch (WakeupException ex) {
                 System.out.println("Exception caught " + ex.getMessage());
