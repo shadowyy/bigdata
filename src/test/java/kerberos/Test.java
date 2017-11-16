@@ -20,26 +20,13 @@ public class Test {
 
     public static void main(String[] args) {
         Configuration conf = HBaseConfiguration.create();
-        //conf.addResource("C:\\bigdata\\hbase\\kerberos\\core-site.xml");	//hBaseSitePath 改成hbase-site.xml文件的路径
-        //conf.addResource("C:\\bigdata\\hbase\\kerberos\\core-site.xml");	//coreSitePath 改成core-site.xml文件的路径
-        //conf.set("hadoop.security.authentication", "Kerberos");
-        //UserGroupInformation.setConfiguration(conf);
-        //System.setProperty("java.security.krb5.conf", "C:\\ProgramData\\MIT\\Kerberos5\\krb5.ini");
-        //try {
-        //    UserGroupInformation.loginUserFromKeytab("wangpeng@ZZ.COM", "C:\\ProgramData\\MIT\\Kerberos5\\krb5.ini");   //userPrincipal 改成对应的你要登录hbase的principal，我用的是wangpeng@ZZ.COM,
-        //    Connection connection = ConnectionFactory.createConnection(conf);
-        //} catch (IOException e) {
-        //    LOGGER.error("",e);
-        //}
-
-
         conf.addResource(new Path("C:\\bigdata\\hbase\\kerberos\\core-site.xml"));
         conf.addResource(new Path("C:\\bigdata\\hbase\\kerberos\\hbase-site.xml"));
         conf.set("hadoop.security.authentication", "Kerberos");
         UserGroupInformation.setConfiguration(conf);
         System.setProperty("java.security.krb5.conf", "C:\\documents\\krb5.conf");
         try {
-            UserGroupInformation.loginUserFromKeytab("wangpeng@ZZ.COM", "C:\\bigdata\\hbase\\kerberos\\wangpeng.keytab");
+            UserGroupInformation.loginUserFromKeytab("", "C:\\bigdata\\hbase\\kerberos\\wangpeng.keytab");
             Connection connection = ConnectionFactory.createConnection(conf);
         } catch (IOException ex) {
             LOGGER.error("HbaseService | UserGroupInformation doAs failed | {}", conf, ex);
